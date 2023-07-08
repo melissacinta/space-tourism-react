@@ -10,7 +10,7 @@ const Technology = () => {
   const navSlider = useRef(null);
   const secondSlider = useRef(null);
   const mainSliderSettings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
