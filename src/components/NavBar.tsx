@@ -15,7 +15,7 @@ const NavBar = ({ active }: Props) => {
       <nav className="hidden md:px-12 lg:pl-[123px] h-24 w-full md:block bg-white/[0.04] backdrop-blur-[40.774227142333984px]">
         <ul className="flex items-center gap-12 x-large:gap-[3.12rem] h-full">
           {navItems.map((item) => (
-            <li className="h-full">
+            <li className="h-full" key={item.name}>
               <a
                 href={item.name === 'home' ? '/' : `/${item.name}`}
                 className={classNames(
@@ -34,7 +34,7 @@ const NavBar = ({ active }: Props) => {
       </nav>
       <div className="relative block md:hidden">
         <button id="navBarBtnOpen">
-          <img src="/menu.svg" />
+          <img src="/assets/shared/icon-hamburger.svg" />
         </button>
         <nav
           id="navBar"
@@ -42,12 +42,12 @@ const NavBar = ({ active }: Props) => {
         >
           <div className="flex justify-end mt-[33.95px] mr-[26.45px] pb-[59.95px]">
             <button id="navBarBtnClose">
-              <img src="/close.svg" />
+              <img src="/assets/shared/icon-close.svg" />
             </button>
           </div>
           <ul className="flex flex-col gap-[19px]">
             {navItems.map((item) => (
-              <li className="h-full">
+              <li className="h-full" key={item.name}>
                 <a
                   href={item.name === 'home' ? '/' : `/${item.name}`}
                   className={classNames(
