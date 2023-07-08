@@ -1,7 +1,7 @@
 import Layout from '../components/Layout';
 import data from '../utils/data.json';
 import Slider from 'react-slick';
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { classNames } from '../utils/functions';
 
 const Technology = () => {
@@ -20,7 +20,7 @@ const Technology = () => {
     autoplay: true,
     autoplaySpeed: 5000,
     asNavFor: navSlider.current as React.MutableRefObject<HTMLDivElement>,
-    beforeChange: (current, next) => {
+    beforeChange: (_current, next) => {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
       secondSlider.current.slickGoTo(next);
       setActive(next as number);
