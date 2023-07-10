@@ -1,9 +1,11 @@
+import { useState } from 'react';
 import { classNames } from '../utils/functions';
 
 export interface Props {
   active?: string;
 }
 const NavBar = ({ active }: Props) => {
+  const [open, setOpen] = useState(false);
   const navItems = [
     { id: '00', name: 'home' },
     { id: '01', name: 'destination' },
@@ -33,15 +35,18 @@ const NavBar = ({ active }: Props) => {
         </ul>
       </nav>
       <div className="relative block md:hidden">
-        <button id="navBarBtnOpen">
+        <button onClick={() => setOpen(true)}>
           <img src="/assets/shared/icon-hamburger.svg" />
         </button>
         <nav
           id="navBar"
-          className="translate-x-full fixed top-0 right-0 bottom-0 h-screen w-[67.73%] backdrop-blur-[40.774227142333984px] bg-white/[0.04] pl-8 transition-all duration-500 ease-in-out"
+          className={classNames(
+            open ? '' : 'translate-x-full',
+            'fixed top-0 right-0 bottom-0 h-screen w-[67.73%] backdrop-blur-[40.774227142333984px] bg-white/[0.04] pl-8 transition-all duration-500 ease-in-out'
+          )}
         >
           <div className="flex justify-end mt-[33.95px] mr-[26.45px] pb-[59.95px]">
-            <button id="navBarBtnClose">
+            <button onClick={() => setOpen(false)}>
               <img src="/assets/shared/icon-close.svg" />
             </button>
           </div>
