@@ -19,7 +19,6 @@ const Crew = () => {
     fade: true,
     autoplay: true,
     autoplaySpeed: 5000,
-    vertical: true,
     asNavFor: navSlider.current as React.MutableRefObject<HTMLDivElement>,
     beforeChange: (_current, next) => {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
@@ -48,10 +47,10 @@ const Crew = () => {
 
         <div className="grid grid-cols-1 md:mt-[3.75rem] lg:grid-cols-2 justify-items-center lg:justify-items-start lg:items-center flex-1 lg:mt-auto w-full h-full">
           <div className="flex flex-col items-center text-center lg:text-left lg:items-start lg:min-h-[60vh] x-large:min-h-[25.375rem] gap-8 md:gap-10 lg:pt-16 w-full h-full">
-            <div className="w-full h-full">
+            <div className="w-full lg:mt-auto">
               <Slider {...mainSliderSettings} ref={mainSlider}>
                 {data.crew.map((item) => (
-                  <div key={item.name}>
+                  <div key={item.name} className="">
                     <div className="block">
                       <span className="font-bellefair text-base leading-[1.125rem] md:text-2xl lg:text-[2rem] mb-2 x-large:mb-[0.9375rem] text-white/[50.42%] lg:leading-[2.313rem] uppercase">
                         {item.role}
@@ -68,7 +67,7 @@ const Crew = () => {
                 ))}
               </Slider>
             </div>
-            <div className="slider-nav order-first md:order-last lg:mt-auto lg:mb-8 w-[5.5rem] lg:[8.25rem">
+            <div className="slider-nav order-first md:order-last lg:mt-auto lg:mb-8 x-large:mb-32 w-[5.5rem] lg:[8.25rem">
               <Slider {...navSliderSettings} ref={navSlider}>
                 {['0', '1', '2', '3'].map((item) => (
                   <div className="h-full" key={item}>
@@ -85,16 +84,20 @@ const Crew = () => {
               </Slider>
             </div>
           </div>
-          <div className="order-first md:order-last h-full  self-end flex items-end">
+          <div className="order-first md:order-last h-full w-full self-end flex items-end">
             <Slider {...mainSliderSettings} vertical ref={secondSlider}>
               {data.crew.map((item) => (
                 <div key={item.name}>
-                  <div className="border-b md:border-0 mb-8 md:mb-0 w-full flex justify-center lg:block border-[#383B4B] h-full max-h-[13.875rem] md:max-h-[33.25rem] lg:max-h-[63vh] x-large:max-h-[70vh] overflow-hidden">
-                    <img
-                      src={item.images.png}
-                      alt=""
-                      className="object-cover h-full mx-auto lg:mx-0"
-                    />
+                  <div>
+                    <div className=" flex justify-center border-[#383B4B] border-b md:border-0 mb-8 md:mb-0 ">
+                      <div className="inline-block lg:block h-full max-h-[13.875rem] md:max-h-[33.25rem] lg:max-h-[63vh] x-large:max-h-[70vh] overflow-hidden">
+                        <img
+                          src={item.images.png}
+                          alt=""
+                          className="h-full max-h-[13.875rem] md:max-h-[33.25rem] lg:max-h-[63vh] x-large:max-h-[70vh] object-cover w-autolg:mx-0"
+                        />
+                      </div>
+                    </div>
                   </div>
                 </div>
               ))}
